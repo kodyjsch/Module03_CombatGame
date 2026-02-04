@@ -29,4 +29,15 @@ public class ColorChange : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        Debug.Log("collided");
+        if (CompareTag("dummy"))
+        {
+            Debug.Log("sword");
+            StartCoroutine(flash());
+        }
+    }
+
 }
