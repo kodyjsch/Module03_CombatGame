@@ -6,13 +6,20 @@ public class ColorChange : MonoBehaviour
 {
     public Renderer rend;
     public Color flashColor = Color.red;
-    public float flashDuration = .2f;
-
+    public float flashDuration = .5f;
     private Color originalColor;
+
+    public float damage = 1;
+    private healthManager hM;
+
+    public AudioSource SFX;
+
+    public bool doesDamage = true;
 
     private void Start()
     {
         originalColor = rend.material.color;
+        hM = GetComponentInParent<healthManager>();
     }
 
     IEnumerator flash()
@@ -22,20 +29,17 @@ public class ColorChange : MonoBehaviour
         rend.material.color = originalColor;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) { 
-            StartCoroutine(flash());
-        }
-    }
-
     void OnTriggerEnter(Collider other) 
     {
         Debug.Log("collided");
         if (other.gameObject.CompareTag("sword"))
         {
-            Debug.Log("sword");
-            StartCoroutine(flash());
+            SFX.Play();
+            if(doesDamage == true)
+            {
+                StartCoroutine(flash());
+                hM.takeDamage(damage);
+            }
         }
     }
 
