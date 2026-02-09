@@ -29,11 +29,10 @@ public class ColorChange : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other) 
     {
-
         Debug.Log("collided");
-        if (CompareTag("dummy"))
+        if (other.gameObject.CompareTag("sword"))
         {
             Debug.Log("sword");
             StartCoroutine(flash());
