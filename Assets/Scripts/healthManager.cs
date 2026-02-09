@@ -10,9 +10,11 @@ public class healthManager : MonoBehaviour
 
     public Animator deathAnim;
 
+
     private void Start()
     {
         startHealth = health;
+
     }
 
     public void takeDamage(float dmg)
@@ -21,15 +23,13 @@ public class healthManager : MonoBehaviour
 
         if(health < 1)
         {
-            Died();
+            deathAnim.SetTrigger("die");
+            var colliders = GetComponentsInChildren<Collider>();
+            foreach (var collider in colliders)
+            {
+                collider.enabled = false;
+            }
         }
-    }
-
-    IEnumerator Died()
-    {
-        deathAnim.SetTrigger("die");
-        yield return new WaitForSeconds(3);
-        Destroy(gameObject);
     }
 
 }
