@@ -8,6 +8,8 @@ public class healthManager : MonoBehaviour
     public float health = 8.0f;
     private float startHealth;
 
+    public Animator deathAnim;
+
     private void Start()
     {
         startHealth = health;
@@ -19,8 +21,15 @@ public class healthManager : MonoBehaviour
 
         if(health < 1)
         {
-            Destroy(gameObject);
+            Died();
         }
+    }
+
+    IEnumerator Died()
+    {
+        deathAnim.SetTrigger("die");
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 
 }

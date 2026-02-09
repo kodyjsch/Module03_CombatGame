@@ -35,6 +35,7 @@ public class ColorChange : MonoBehaviour
         if (other.gameObject.CompareTag("sword"))
         {
             SFX.Play();
+
             if(doesDamage == true)
             {
                 StartCoroutine(flash());
