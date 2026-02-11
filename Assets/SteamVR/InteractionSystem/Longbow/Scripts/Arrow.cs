@@ -149,7 +149,6 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		void OnCollisionEnter( Collision collision )
 		{
-			Destroy(gameObject);
 
 			if ( inFlight )
 			{

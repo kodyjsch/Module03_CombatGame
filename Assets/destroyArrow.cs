@@ -5,14 +5,9 @@ using UnityEngine;
 public class destroyArrow : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

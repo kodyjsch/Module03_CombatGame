@@ -10,6 +10,9 @@ public class healthManager : MonoBehaviour
 
     public Animator deathAnim;
 
+    public ParticleSystem boom;
+    public ParticleSystem debris;
+
 
     private void Start()
     {
@@ -29,7 +32,16 @@ public class healthManager : MonoBehaviour
             {
                 collider.enabled = false;
             }
+
+            Invoke("BlowUp", 2.0f);
         }
+    }
+
+    public void BlowUp()
+    {
+        boom.Play();
+        debris.Play();
+        Destroy(gameObject);
     }
 
 }
