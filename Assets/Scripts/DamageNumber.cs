@@ -14,7 +14,7 @@ public class DamageNumber : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.H)){
-            CreatePopUp(Vector3.one, Random.Range(0, 1000).ToString());
+            CreatePopUp(Vector3.one, Random.Range(10, 100).ToString());
         }
     }
 

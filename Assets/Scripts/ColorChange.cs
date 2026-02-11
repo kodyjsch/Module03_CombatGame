@@ -40,6 +40,8 @@ public class ColorChange : MonoBehaviour
             {
                 StartCoroutine(flash());
                 hM.takeDamage(damage);
+
+                DamageNumber.current.CreatePopUp(transform.position, damage.ToString());
             }
         }
     }
